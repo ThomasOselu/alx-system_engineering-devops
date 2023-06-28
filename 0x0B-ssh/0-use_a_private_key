@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-#connecting to the remote server using the ssh command
+#connecting to server using ssh
+
 ssh -i ~/.ssh/school ubuntu@18.210.13.43
