@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+<<<<<<< HEAD
 # bash: script install and configure Nginx web server
 # and redirects traffic:
 
@@ -11,13 +12,30 @@ sudo sed -i 's/80 default_server/80/' /etc/nginx/sites-available/default
 # create index.html file served out by server:
 # & configure the redirection
 echo 'Hello World!' > /etc/nginx/html/index.html
+=======
+# Configures an Nginx server so that /redirect_me redirects to another page.
+# The redirection is configured as a "301 Moved Permanently"
+
+apt-get update
+apt-get install -y nginx
+
+mkdir /etc/nginx/html
+touch /etc/nginx/html/index.html
+echo "Hello World!" > /etc/nginx/html/index.html
+>>>>>>> 05c22a11888a76b72de6cf0d21adae08f938fb23
 printf %s "server {
     listen 80;
     listen [::]:80 default_server;
     root   /etc/nginx/html;
     index  index.html index.htm;
+<<<<<<< HEAD
     location /redirect_me {
         return 301 https://stackoverflow.com/;
+=======
+
+    location /redirect_me {
+        return 301 http://cuberule.com/;
+>>>>>>> 05c22a11888a76b72de6cf0d21adae08f938fb23
     }
 }" > /etc/nginx/sites-available/default
 
