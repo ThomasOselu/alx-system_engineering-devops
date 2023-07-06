@@ -1,16 +1,12 @@
+#!/usr/bin/env bash
 # puppet script - configure ssh authentication:
 
-file_line { 'Turn off passwd auth':
-  path => '/etc/ssh/ssh_config',
-  line => 'PasswordAuthentication no',
-}
+file { 'etc/ssh/ssh_config':
+	ensure => present,
+content =>"
 
-file_line { 'Declare identity file':
-  path => '/etc/ssh/ssh_config',
-  line => 'IdentityFile ~/.ssh/school',
-}
-
-service { 'ssh':
-  ensure => running,
-  enable => true,
+	#ssh client configuration
+	host*
+	IdentityFile ~/.ssh/school
+	PasswordAuthentication no
 }
